@@ -3,16 +3,17 @@ import 'package:http_source/http_source.dart';
 import 'package:dio/dio.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:tmo_source/data/data_sources/remote/filters/tmo_filters.dart';
-import 'package:tmo_source/data/data_sources/remote/tmo_source.dart';
-import 'package:tmo_source/data/repositories/tmo_repository.dart';
+import 'package:tmo_source/data/data_sources/remote/tmo_data_source.dart';
+import 'package:tmo_source/data/repositories/tmo_source.dart';
 
 final dioProvider = Provider<Dio>((ref) {
   return Dio();
 });
 
 final sourceProvider = StateProvider<AHttpSource>((ref) {
-  return TmoRepository(
-    TmoSource(dio: ref.read(dioProvider), isSFWMode: false, showAllScans: true),
+  return TmoSource(
+    TmoDataSource(
+        dio: ref.read(dioProvider), isSFWMode: false, showAllScans: true),
   );
 });
 

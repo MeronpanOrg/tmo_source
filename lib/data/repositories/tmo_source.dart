@@ -4,16 +4,16 @@ import 'package:http_source/models/manga.dart';
 import 'package:http_source/models/manga_details.dart';
 import 'package:http_source/models/mangas_page.dart';
 import 'package:tmo_source/data/data_sources/remote/filters/tmo_request.dart';
-import 'package:tmo_source/data/data_sources/remote/tmo_source.dart';
-import 'package:tmo_source/domain/repository/itmo_repository.dart';
+import 'package:tmo_source/data/data_sources/remote/tmo_data_source.dart';
+import 'package:tmo_source/domain/repositories/itmo_source.dart';
 
-class TmoRepository extends ITmoRepository {
-  final TmoSource source;
+class TmoSource extends ITmoSource {
+  final TmoDataSource source;
 
   @override
   String get id => '$baseUrl/$lang/$versionId';
 
-  TmoRepository(this.source);
+  TmoSource(this.source);
 
   @override
   Future<MangasPage> fetchPopularManga(int page) async {

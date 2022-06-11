@@ -8,12 +8,12 @@ import 'package:http_source/models/manga.dart';
 import 'package:http_source/models/mangas_page.dart';
 import 'package:tmo_source/data/data_sources/remote/filters/tmo_filters.dart';
 
-class TmoSource {
+class TmoDataSource {
   final Dio dio;
   final bool isSFWMode;
   final bool showAllScans;
 
-  TmoSource(
+  TmoDataSource(
       {required this.dio, required this.isSFWMode, required this.showAllScans});
 
   Dio get client => dio;
@@ -55,7 +55,7 @@ class TmoSource {
     try {
       final res = await popularMangaRequest(page);
       mangasPage = await popularMangaParse(res);
-    } on DioError  {
+    } on DioError {
       // print(e.message);
     }
     return mangasPage;
