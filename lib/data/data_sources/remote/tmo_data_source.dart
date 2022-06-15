@@ -356,13 +356,13 @@ class TmoDataSource {
     return MangasPage([details!], false);
   }
 
-  statusEnum parseStatus(String status) {
+  StatusEnum parseStatus(String status) {
     switch (status) {
       case 'Publicándose':
-        return statusEnum.ongoing;
+        return StatusEnum.ongoing;
       case 'Finalizado':
-        return statusEnum.completed;
+        return StatusEnum.completed;
     }
-    return statusEnum.unknown;
+    return StatusEnum.unknown;
   }
 }
